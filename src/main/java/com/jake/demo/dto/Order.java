@@ -1,22 +1,21 @@
 package com.jake.demo.dto;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "cart")
-public class Cart {
-
+@Document(collection = "orders")
+public class Order {
     @Id
     private Integer id;
     private Integer userId;
-    private List<Order> tips;
+    private Post post;
+    private float tip;
     
-    public Cart(Integer id, Integer userId, List<Order> tips) {
+    public Order(Integer id, Integer userId, Post post, float tip) {
         this.id = id;
         this.userId = userId;
-        this.tips = tips;
+        this.post = post;
+        this.tip = tip;
     }
 
     public Integer getId() {
@@ -35,11 +34,19 @@ public class Cart {
         this.userId = userId;
     }
 
-    public List<Order> getTips() {
-        return tips;
+    public Post getPost() {
+        return post;
     }
 
-    public void setTips(List<Order> tips) {
-        this.tips = tips;
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public float getTip() {
+        return tip;
+    }
+
+    public void setTip(float tip) {
+        this.tip = tip;
     }
 }
