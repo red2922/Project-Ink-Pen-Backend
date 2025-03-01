@@ -14,27 +14,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jake.demo.Services.CustomerService;
 import com.jake.demo.dto.Customer;
+import com.jake.demo.dto.TestObj;
 
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
 
     @Autowired
-    private CustomerService dataService;
+    private CustomerService customerService;
 
     @GetMapping("/customer/{name}")
     public Customer getUser(@PathVariable String name) {
-        return dataService.getCustomerByName(name);
+        return customerService.getCustomerByName(name);
     }
 
     @GetMapping("/customer/id/{id}")
     public Optional<Customer> getUserById(@PathVariable Integer id) {
-        return dataService.getCustomerById(id);
+        return customerService.getCustomerById(id);
     }
 
     @PostMapping("/customers")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        Customer savedCustomer = dataService.saveCustomer(customer);
+        Customer savedCustomer = customerService.saveCustomer(customer);
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
+
+    // Works but I need to fix how it updates the value better
+    @PostMapping("/customer/balance")
+    public void addBalance(@RequestBody TestObj testObj) {
+        customerService.addBalance(testObj.getId(), testObj.getProfit());
+    }
+
 }
