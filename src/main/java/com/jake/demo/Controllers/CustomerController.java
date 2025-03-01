@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jake.demo.Services.CustomerService;
 import com.jake.demo.dto.Customer;
-import com.jake.demo.dto.TestObj;
+import com.jake.demo.dto.Payment;
 
 @RestController
 @RequestMapping("/api")
@@ -39,10 +39,10 @@ public class CustomerController {
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
 
-    // Works but I need to fix how it updates the value better
+    // Works for what I am doing
     @PostMapping("/customer/balance")
-    public void addBalance(@RequestBody TestObj testObj) {
-        customerService.addBalance(testObj.getId(), testObj.getProfit());
+    public void addBalance(@RequestBody Payment payment) {
+        customerService.changeBalance(payment.getId(), payment.getPay());
     }
 
 }

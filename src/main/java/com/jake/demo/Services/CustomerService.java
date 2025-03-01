@@ -45,9 +45,8 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    //Note testing this for now
-    public void addBalance(Integer id, float profit) {
-        customerRepository.increaseBalance(id, profit);
+    public void changeBalance(Integer id, float pay) {
+        customerRepository.changeBalance(id, pay);
     }
 
 }

@@ -12,5 +12,5 @@ public interface CustomerRepository extends MongoRepository<Customer, Integer> {
 
     @Query("{ '_id': ?0 }")
     @Update("{ '$inc': { balance: ?1 } }")
-    void increaseBalance(Integer id, float profit);
+    void changeBalance(Integer id, float pay);
 }
