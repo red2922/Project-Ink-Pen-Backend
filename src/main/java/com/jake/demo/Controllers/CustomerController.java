@@ -39,7 +39,7 @@ public class CustomerController {
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
 
-    // Works for what I am doing
+    // Works for what I am doing. Both adding and subtracting balance
     @PostMapping("/customer/balance")
     public void addBalance(@RequestBody Payment payment) {
         customerService.changeBalance(payment.getId(), payment.getPay());
