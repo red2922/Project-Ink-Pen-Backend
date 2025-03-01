@@ -1,5 +1,7 @@
 package com.jake.demo.Controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +23,13 @@ public class CustomerController {
     private CustomerService dataService;
 
     @GetMapping("/customer/{name}")
-    public Customer getGreetingUser(@PathVariable String name) {
+    public Customer getUser(@PathVariable String name) {
         return dataService.getCustomerByName(name);
+    }
+
+    @GetMapping("/customer/id/{id}")
+    public Optional<Customer> getUserById(@PathVariable Integer id) {
+        return dataService.getCustomerById(id);
     }
 
     @PostMapping("/customers")
