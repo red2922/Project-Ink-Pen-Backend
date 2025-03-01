@@ -1,8 +1,84 @@
 package com.jake.demo.dto;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "posts")
 public class Post {
+    @Id
+    private Integer id;
+    private String title;
+    private String description;
+    private Integer userId;
+    private float tips;
+    private Integer likes;
+    private String imageUrl;
+
+    public Post(Integer id, String title, String description, Integer userId, float tips, Integer likes,
+            String imageUrl) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.userId = userId;
+        this.tips = tips;
+        this.likes = likes;
+        this.imageUrl = imageUrl;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public float getTips() {
+        return tips;
+    }
+
+    public void setTips(float tips) {
+        this.tips = tips;
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
 }
