@@ -19,7 +19,7 @@ public class PostController {
     private PostsService postService;
 
     @PostMapping("/post")
-    public ResponseEntity<Post> createCustomer(@RequestBody Post post) {
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
         Post savedPost = postService.createNewPost(post);
         return new ResponseEntity<>(savedPost, HttpStatus.CREATED);
     }
