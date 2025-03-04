@@ -1,20 +1,14 @@
 package com.jake.demo.dto;
 
 public class Payment {
-    private Integer id;
+    private Integer buyerId;
     private float pay;
+    private Integer sellerId;
 
-    public Payment(Integer id, float pay) {
-        this.id = id;
+    public Payment(Integer id, float pay, Integer sellerId) {
+        this.buyerId = id;
         this.pay = pay;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        this.sellerId = sellerId;
     }
 
     public float getPay() {
@@ -24,4 +18,21 @@ public class Payment {
     public void setPay(float pay) {
         this.pay = pay;
     }
+
+    public Integer getBuyerId() {
+        return buyerId;
+    }
+
+    public void setBuyerId(Integer buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
+    }
+
 }

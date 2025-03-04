@@ -42,7 +42,7 @@ public class CustomerController {
     // Works for what I am doing. Both adding and subtracting balance
     @PostMapping("/customer/balance")
     public void addBalance(@RequestBody Payment payment) {
-        customerService.changeBalance(payment.getId(), payment.getPay());
+        customerService.changeBalance(payment.getSellerId(), payment.getPay());
     }
 
 }
