@@ -15,12 +15,11 @@ public class CartService {
     private CustomerService customerService;
     private PostsService postsService;
 
-    public CartService(CartRepository cartRepository, CustomerService customerService, PostsService postsService){
+    public CartService(CartRepository cartRepository, CustomerService customerService, PostsService postsService) {
         this.cartRepository = cartRepository;
         this.customerService = customerService;
         this.postsService = postsService;
     }
-
 
     public Optional<Cart> getCartById(Integer id) {
         return cartRepository.findById(id);
@@ -28,15 +27,11 @@ public class CartService {
 
     @Transactional
     public void processCart(Cart cart) {
-        
-        for(Order order : cart.getTips()){
+        for (Order order : cart.getTips()) {
             customerService.changeBalance(cart.getUserId(), -order.getTip());
             customerService.changeBalance(order.getPost().getUserId(), order.getTip());
-            //Need to add an update to the post balance
+            postsService.updatePostBalance(order.getPost().getId(), order.getTip());
         }
-
-        //Process cart will first check if the cart exists. If null create a new cart otherwise
-        //go through every cart for an account. First subtracts the money from the current account. Then gives them to reflect both the posts and posters accounts. 
     }
 
 }

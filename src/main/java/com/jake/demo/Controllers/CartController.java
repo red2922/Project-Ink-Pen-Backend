@@ -26,9 +26,6 @@ public class CartController {
 
     @PostMapping("/cart/{id}")
     public void processCart(@RequestBody Cart cart){
-        
+        cartService.processCart(cart);
     }
-
-
-
 }
