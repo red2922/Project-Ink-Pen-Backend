@@ -1,5 +1,8 @@
 package com.jake.demo.dto;
 
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,6 +17,9 @@ public class Post {
     private Integer likes;
     private String imageUrl;
 
+    @CreatedDate
+    private LocalDateTime createdDate;
+
     public Post(Integer id, String title, String description, Integer userId, float tips, Integer likes,
             String imageUrl) {
         this.id = id;
@@ -23,6 +29,7 @@ public class Post {
         this.tips = tips;
         this.likes = likes;
         this.imageUrl = imageUrl;
+        this.createdDate = LocalDateTime.now();
     }
 
     public Integer getId() {
@@ -79,6 +86,14 @@ public class Post {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
 }
