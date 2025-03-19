@@ -20,14 +20,13 @@ public class Post {
     @CreatedDate
     private LocalDateTime createdDate;
 
-    public Post(Integer id, String title, String description, Integer userId, float tips, Integer likes,
-            String imageUrl) {
+    public Post(Integer id, String title, String description, Integer userId, String imageUrl) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.userId = userId;
-        this.tips = tips;
-        this.likes = likes;
+        this.tips = 0;
+        this.likes = 0;
         this.imageUrl = imageUrl;
         this.createdDate = LocalDateTime.now();
     }
