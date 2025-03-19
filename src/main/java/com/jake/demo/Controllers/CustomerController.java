@@ -16,6 +16,8 @@ import com.jake.demo.Services.CustomerService;
 import com.jake.demo.dto.Customer;
 import com.jake.demo.dto.Payment;
 
+//@CrossOrigin(origins = "http://localhost:5173", maxAge = 3600)
+//CrossOrigin seems like the way that modern applications accept certain requests from a certain URL
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
