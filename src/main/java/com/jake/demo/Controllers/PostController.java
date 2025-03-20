@@ -23,5 +23,4 @@ public class PostController {
         Post savedPost = postService.createNewPost(post);
         return new ResponseEntity<>(savedPost, HttpStatus.CREATED);
     }
-
 }

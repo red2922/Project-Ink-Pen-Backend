@@ -22,7 +22,11 @@ public class PostsService {
         return postRepository.save(post);
     }
 
-    public void updatePostBalance(Integer id, float pay ){
+    public void updatePostBalance(Integer id, float pay) {
         postRepository.changeBalance(id, pay);
+    }
+
+    public void updateLikes(Integer id, Integer likes) {
+        postRepository.changeLikes(id, likes);
     }
 }

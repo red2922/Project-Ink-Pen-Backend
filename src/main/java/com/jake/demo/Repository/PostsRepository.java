@@ -11,4 +11,8 @@ public interface PostsRepository extends MongoRepository<Post, Integer> {
     @Query("{ '_id': ?0 }")
     @Update("{ '$inc': { balance: ?1 } }")
     void changeBalance(Integer id, float pay);
+
+    @Query("{ '_id': ?0 }")
+    @Update("{ '$inc': { likes: ?1 } }")
+    void changeLikes(Integer id, Integer likes);
 }
