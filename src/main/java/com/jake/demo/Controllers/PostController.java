@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jake.demo.Services.PostsService;
+import com.jake.demo.dto.LikePayment;
+import com.jake.demo.dto.Payment;
 import com.jake.demo.dto.Post;
 
 @RestController
@@ -22,5 +24,17 @@ public class PostController {
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
         Post savedPost = postService.createNewPost(post);
         return new ResponseEntity<>(savedPost, HttpStatus.CREATED);
+    }
+
+    //Note mismatch of variable names but should work??!!??
+    @PostMapping("/post/likes")
+    public void updateLikes(@RequestBody LikePayment likesPayment) {
+        postService.updateLikes(likesPayment.getSellerId(), likesPayment.getLikes());
+    }
+
+    @PostMapping("/post/balance")
+    public void updateBalance(@RequestBody Payment payment) {
+        postService.updatePostBalance(payment.getSellerId(), payment.getPay());
+        ;
     }
 }
